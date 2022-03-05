@@ -1,0 +1,38 @@
+
+<!-- Business Contacts Page --> 
+
+<div class="d-flex justify-content-center display-3">Business Contacts</div>
+<table class="table table-striped mt-3">
+    <thead class="table align-middle">
+        <tr class="table-dark">
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Contact Number</th>
+            <th scope="col">Email Address</th>
+            <th></th>
+            <% if(display !== '') { %>
+            <th class="d-flex justify-content-end" scope="col"><a href="/business-contacts/add" class="btn btn-primary bg-dark border border-light">Add</a></th>
+            <% } %>
+        </tr>
+    </thead>
+    <tbody>
+        <% for(let count = 0; count < contacts.length; count++) { %>
+            <tr>
+                <th scope="row"><%= count+1 %></th>
+                <td><%= contacts[count].lastname + ', ' + contacts[count].firstname %></td>
+                <td><%= contacts[count].contact %></td>
+                <td><%= contacts[count].email %></td>
+                <% if(display !== '') { %>
+                <td>
+                    <a href="/business-contacts/edit/<%= contacts[count]._id %>" class="btn btn-primary btn-sm bg-primary" type="button">Edit</a>
+                </td>
+                <td>
+                    <a href="/business-contacts/delete/<%= contacts[count]._id %>" class="btn btn-primary btn-sm bg-danger confirm" type="button">Delete</a>
+                </td>
+                <% } %>
+            </tr>
+        <% } %>
+    </tbody>
+</table>
+
+
